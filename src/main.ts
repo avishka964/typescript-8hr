@@ -1,9 +1,15 @@
-let username = 'David';
-console.log(username);
+let myName: string = 'David'
+let isLoading: boolean;
+let album: any;
+let age: string | number; //union type
+let re: RegExp = /\w+/g
 
-let a: number  = 12
-let b: number = 6
-let c: number = 2
+myName = 'John'
+isLoading = true
+album = 1234
 
-console.log(a/b)
-console.log(c * b)
+const sum = (a: number,b: string) => {
+    return a + b
+}
+
+console.log(sum(3,'2'))
