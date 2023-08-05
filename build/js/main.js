@@ -1,38 +1,52 @@
 "use strict";
-let stringArr = ['one', 'hey', 'Dave'];
-let guitars = ['Strat', 'Les Paul', 9034];
-let mixedData = ['toyota', 1998, true];
-stringArr[0] = 'Mike';
-stringArr.push('Monday');
-guitars[0] = 3478;
-guitars.unshift('Jim');
-let test = [];
-let bands = [];
-bands.push('Van Halen');
-//Tuple
-let myTuple = ['Dave', 34, true];
-let mixed = ['Bob', 34, false];
-myTuple[1] = 45;
-//Objects
-let myObj;
-myObj = [];
-console.log(typeof myObj);
-myObj = bands;
-const exampleObj = {
-    prop1: 'Dave',
-    prop2: true,
+//Functions
+//literal types
+let myName;
+let userName;
+userName = 'Amy';
+const add = (a, b) => {
+    return a + b;
 };
-exampleObj.prop1 = 'Bob';
-let evh = {
-    name: 'Eddie',
-    active: false,
-    albums: [1984, 5150, 'OU812']
+const logMsg = (message) => {
+    console.log(message);
 };
-let jp = {
-    name: 'Jimmy',
-    albums: ['I', 'II', 'OU812']
+logMsg('Hello!!');
+logMsg(add(2, 4));
+let subtract = function (c, d) {
+    return c - d;
 };
-const greetGuitarist = (guitarist) => {
-    return `Hello ${guitarist.name}!`;
+//interface mathFunction {(a:number, b:number): number}
+let multiply = function (c, d) {
+    return c * d;
 };
-console.log(greetGuitarist(jp));
+logMsg(multiply(2, 2));
+//optional parameters
+const addAll = (a, b, c) => {
+    if (typeof c !== 'undefined') {
+        return a + b + c;
+    }
+    return a + b;
+};
+//default param value
+const sumAll = (a = 10, b, c = 2) => {
+    return a + b + c;
+};
+logMsg(addAll(2, 3, 5));
+logMsg(addAll(2, 4));
+logMsg(sumAll(2, 4));
+logMsg(sumAll(undefined, 3));
+const createError = (error) => {
+    throw new Error(error);
+};
+//custom type guard
+const isNumber = (value) => {
+    return typeof value === 'number' ? true : false;
+};
+//use of the never type
+const numberOrString = (value) => {
+    if (typeof value === 'string')
+        return 'String';
+    if (isNumber(value))
+        return 'Number';
+    return createError('This should never happen!');
+};

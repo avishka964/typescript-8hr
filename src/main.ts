@@ -1,59 +1,81 @@
-let stringArr = ['one', 'hey', 'Dave']
+//Functions
 
-let guitars = ['Strat', 'Les Paul', 9034]
+//type Aliases
+type stringOrNumber = string | number;
 
-let mixedData = ['toyota', 1998, true]
+type stringOrNumberArray = (string | number)[];
 
-stringArr[0] = 'Mike'
-stringArr.push('Monday')
-
-guitars[0] = 3478
-guitars.unshift('Jim')
-
-let test = []
-let bands: string[] = []
-bands.push('Van Halen')
-
-//Tuple
-let myTuple:[string, number, boolean] = ['Dave', 34 , true]
-
-let mixed = ['Bob', 34, false]
-
-myTuple[1] = 45
-
-//Objects
-let myObj: object
-myObj = []
-console.log(typeof myObj)
-myObj = bands
-
-const exampleObj = {
-    prop1: 'Dave',
-    prop2: true,
-}
-
-exampleObj.prop1 = 'Bob'
-
-//type or interface
 type Guitarist = {
     name: string,
-    active?: boolean,
-    albums: (string | number)[]
-}
+    active: boolean,
+    albums: (string | number)[];
+};
 
-let evh: Guitarist = {
-    name: 'Eddie',
-    active: false,
-    albums: [1984, 5150, 'OU812']
-}
+type userId = stringOrNumber;
 
-let jp: Guitarist = {
-    name: 'Jimmy',
-    albums: ['I', 'II', 'OU812']
-}
+//literal types
+let myName: 'Dave';
 
-const greetGuitarist = (guitarist: Guitarist) => {
-    return `Hello ${guitarist.name}!`
-}
+let userName: 'Dave' | 'John' | 'Amy';
+userName = 'Amy';
 
-console.log(greetGuitarist(jp))
+
+const add = (a: number, b: number): number => {
+    return a + b;
+};
+
+const logMsg = (message: any): void => {
+    console.log(message);
+};
+
+logMsg('Hello!!');
+logMsg(add(2, 4));
+
+
+let subtract = function (c: number, d: number): number {
+    return c - d;
+};
+
+type mathFunction = (a: number, b: number) => number;
+//interface mathFunction {(a:number, b:number): number}
+
+let multiply: mathFunction = function (c, d) {
+    return c * d;
+};
+
+logMsg(multiply(2, 2));
+
+//optional parameters
+const addAll = (a: number, b: number, c?: number): number => {
+    if (typeof c !== 'undefined') {
+        return a + b + c;
+    }
+    return a + b;
+};
+
+//default param value
+const sumAll = (a: number = 10, b: number, c: number = 2): number => {
+    return a + b + c;
+};
+
+logMsg(addAll(2, 3, 5));
+logMsg(addAll(2, 4));
+logMsg(sumAll(2, 4));
+logMsg(sumAll(undefined, 3));
+
+
+const createError = (error: string) => {
+    throw new Error(error);
+};
+
+//custom type guard
+const isNumber = (value: any): boolean => {
+    return typeof value === 'number' ? true : false;
+};
+
+//use of the never type
+const numberOrString = (value: number | string): string => {
+    if (typeof value === 'string') return 'String';
+    if (isNumber(value)) return 'Number';
+    return createError('This should never happen!');
+};
