@@ -1,3 +1,5 @@
+//Basic types
+
 let myName: string = 'David'
 let isLoading: boolean;
 let album: any;

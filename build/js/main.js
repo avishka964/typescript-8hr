@@ -1,4 +1,5 @@
 "use strict";
+//Basic types
 let myName = 'David';
 let isLoading;
 let album;
