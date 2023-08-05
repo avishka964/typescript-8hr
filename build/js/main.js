@@ -1,4 +1,5 @@
 "use strict";
+//Array & Objects
 let stringArr = ['one', 'hey', 'Dave'];
 let guitars = ['Strat', 'Les Paul', 9034];
 let mixedData = ['toyota', 1998, true];
