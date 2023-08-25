@@ -1,9 +1,12 @@
 "use strict";
-//Generics
-const echo = (arg) => arg;
-const isObj = (arg) => {
-    return (typeof arg === 'object' && !Array.isArray(arg) && arg !== null);
+//Utility Types
+const updateAssignment = (assign, propsToUpdate) => {
+    return Object.assign(Object.assign({}, assign), propsToUpdate);
 };
-console.log(isObj(true));
-console.log(isObj(['pig', 'cat']));
-console.log(isObj({ game: 'football' }));
+const assign1 = {
+    stuId: "compsci123",
+    title: "Final Project",
+    grade: 0,
+};
+console.log(updateAssignment(assign1, { grade: 95 }));
+const assignGraded = updateAssignment(assign1, { grade: 95 });
